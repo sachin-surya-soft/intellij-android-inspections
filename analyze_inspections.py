@@ -158,6 +158,9 @@ def comment_on_pr(diagnostics, repo, pr, token):
                 diagnostic.error_level,
                 diagnostic.description,
             )
+    if len(text) > 65000:
+        # GitHub does not allow comments larger than 65536 characters
+        text = text[:65000] + "‼️‼️TRUNCATED‼️‼️"
     body = {"event": event, "comments": comments, "body": text}
     res = requests.post(url, headers=headers, data=json.dumps(body))
     assert_200_response(res, "Unable to review PR")
