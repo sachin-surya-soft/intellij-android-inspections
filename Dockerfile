@@ -1,4 +1,4 @@
-FROM gopalkrishnaps/intellij-android:2020.2-29
+FROM gopalkrishnaps/intellij-android:2020.2.3-29
 
 WORKDIR /opt
 
